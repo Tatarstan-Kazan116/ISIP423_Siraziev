@@ -20,7 +20,8 @@ class Program
 
     static void Main()
     {
-        while (true)
+        bool flag = true;
+        while (flag == true)
         {
             Console.WriteLine("\n1. Добавить товар\n2. Удалить товар\n3. Поставка\n4. Продажа\n5. Поиск\n6. Выход");
             Console.Write("Выбор: ");
@@ -32,7 +33,7 @@ class Program
             else if (choice == "3") postavkaP();
             else if (choice == "4") SellP();
             else if (choice == "5") poiskP();
-            else if (choice == "6") break;
+            else if (choice == "6") flag = false;
             else Console.WriteLine("Ошибка!");
         }
     }
@@ -110,12 +111,12 @@ class Program
     static void poiskP()
     {
         Console.Write("Поиск (код/название/категория): ");
-        string search = Console.ReadLine().ToLower();
+        string poisk = Console.ReadLine().ToLower();
 
         var results = products.Where(p =>
-            p.Code.ToLower().Contains(search) ||
-            p.Name.ToLower().Contains(search) ||
-            p.Category.ToLower().Contains(search));
+            p.Code.ToLower().Contains(poisk) ||
+            p.Name.ToLower().Contains(poisk) ||
+            p.Category.ToLower().Contains(poisk));
 
         foreach (var p in results)
         {
